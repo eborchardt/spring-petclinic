@@ -41,9 +41,10 @@ object Build : BuildType({
 
     steps {
         maven {
-            goals = "clean test generate-resources"
+            goals = "clean package"
             runnerArgs = "-Dmaven.test.failure.ignore=true"
             param("org.jfrog.artifactory.selectedDeployableServer.defaultModuleVersionConfiguration", "GLOBAL")
+            dockerImage = "maven:3.6.3-jdk-8"
         }
     }
 
